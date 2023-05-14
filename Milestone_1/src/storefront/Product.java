@@ -65,11 +65,19 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    
+    /**
+     * Returns the quantity of the Product
+     * @return Returns the quantity as an int
+     */
     public int getQuantity() {
         return quantity;
     }
-
+    
+    /**
+     * Sets the quantity of the Product taking a parameter
+     * @param quantity Quantity parameter as an int
+     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
