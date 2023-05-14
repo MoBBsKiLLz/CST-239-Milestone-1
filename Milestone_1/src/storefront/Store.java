@@ -79,14 +79,16 @@ public class Store {
 			for(int s = 0; s < shoppingCart.size(); s++) {
 			    Product currentProduct = shoppingCart.get(s);
 			    if(currentProduct.getName().compareTo(productName) == 0) {
-				if(currentProduct.getQuantity() == quantity) {
-				    shoppingCart.remove(s);
-				    return true;
-				}
-				else if (currentProduct.getQuantity() > quantity) {
-				    currentProduct.setQuantity(currentProduct.getQuantity() + quantity);
-				    return true;
-				}
+					if(currentProduct.getQuantity() == quantity) {
+					    shoppingCart.remove(s);
+					    System.out.println("Item removed from shopping cart.");
+					    return true;
+					}
+					else if (currentProduct.getQuantity() > quantity) {
+					    currentProduct.setQuantity(currentProduct.getQuantity() + quantity);
+					    System.out.println("Item removed from shopping cart.");
+					    return true;
+					}
 			    }
 			}
     	}
