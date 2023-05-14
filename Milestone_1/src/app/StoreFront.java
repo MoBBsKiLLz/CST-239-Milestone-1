@@ -4,8 +4,17 @@ import storefront.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * StoreFront class, driver
+ * @author migg_
+ *
+ */
 public class StoreFront {
 
+	/**
+	 * Main method
+	 * @param args Default parameter
+	 */
     public static void main(String[] args) {
 	Store myStore = new Store(); // Create new store
 	ArrayList<Product> products = new ArrayList<Product>(); // Create new products ArrayList
