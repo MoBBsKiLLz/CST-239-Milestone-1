@@ -3,13 +3,13 @@ package storefront;
 import java.util.ArrayList;
 
 /**
- * Store class with inventory (ArraysList<>) and shoppingCart (ArrayList<>)
+ * Store class with inventory (ArraysList) and shoppingCart (ArrayList)
  * @author migg_
  *
  */
 public class Store {
 	/**
-	 * Fields include inventory and shoppingCart as ArrayList<>
+	 * Fields include inventory and shoppingCart as ArrayList
 	 */
     private ArrayList<Product> inventory;
     private ArrayList<Product> shoppingCart;
@@ -24,8 +24,8 @@ public class Store {
     
     /**
      * Store constructor that takes inventory and shoppingCart parameters
-     * @param inventory Inventory parameter as a ArrayList<>
-     * @param shoppingCart ShoppingCart parameter as a ArrayList<>
+     * @param inventory Inventory parameter as a ArrayList
+     * @param shoppingCart ShoppingCart parameter as a ArrayList
      */
     public Store(ArrayList<Product> inventory, ArrayList<Product> shoppingCart) {
 	this.inventory = inventory;
@@ -34,7 +34,7 @@ public class Store {
     
     /**
      * Returns the Inventory of a product
-     * @return Returns the Inventory as an ArrayList<>
+     * @return Returns the Inventory as an ArrayList
      */
     public ArrayList<Product> getInventory() {
         return inventory;
@@ -42,7 +42,7 @@ public class Store {
 
     /**
      * Sets the Inventory of a product taking a parameter
-     * @param inventory Inventory parameter as an ArrayList<>
+     * @param inventory Inventory parameter as an ArrayList
      */
     public void setInventory(ArrayList<Product> inventory) {
         this.inventory = inventory;
@@ -50,7 +50,7 @@ public class Store {
 
     /**
      * Returns the ShoppingCart of a product
-     * @return Returns the ShoppingCart as an ArrayList<>
+     * @return Returns the ShoppingCart as an ArrayList
      */
     public ArrayList<Product> getShoppingCart() {
         return shoppingCart;
@@ -58,7 +58,7 @@ public class Store {
 
     /**
      * Sets the ShoppingCart of a product taking a parameter
-     * @param shoppingCart ShoppingCart parameter as a ArrayList<>
+     * @param shoppingCart ShoppingCart parameter as a ArrayList
      */
     public void setShoppingCart(ArrayList<Product> shoppingCart) {
         this.shoppingCart = shoppingCart;
@@ -149,7 +149,7 @@ public class Store {
     
     /**
      * Completes the purchase of a product by removing it from the inventory
-     * @return Returns a receipt as an ArrayList<>
+     * @return Returns a receipt as an ArrayList
      */
     public ArrayList<Product> purchase() {
 		ArrayList<Product> receipt = new ArrayList<Product>();
@@ -188,7 +188,7 @@ public class Store {
     
     /**
      * Cancels the purchase of a product taking a parameter
-     * @param receipt Receipt parameter as a ArrayList<>
+     * @param receipt Receipt parameter as a ArrayList
      * @return Returns true or false
      */
     public boolean cancel(ArrayList<Product> receipt) {
