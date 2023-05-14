@@ -71,7 +71,16 @@ public class StoreFront {
 	    
 	    if(quantity.compareTo("-1") != 0) {
 		while(product.compareTo("-1") != 0 && quantity.compareTo("-1") != 0) {
-		    myStore.addToCart(product, Integer.parseInt(quantity));
+		    // Add product to shopping cart
+			boolean addToCart = myStore.addToCart(product, Integer.parseInt(quantity));
+			if (addToCart) {
+				System.out.println();
+				System.out.println("Product was added to the shopping cart");
+			}
+			else {
+				System.out.println();
+				System.out.println("Product was not added to the shopping cart");
+			}
 		    
 		    // Ask user if they would like to check-out
 		    System.out.print("Would you like to check-out? (Y/N) ");
@@ -121,7 +130,7 @@ public class StoreFront {
 				quantity = input.next();
 				System.out.println();
 		    }
-		    else if (addProduct.compareTo("-1") == 0) {
+		    else if (addProduct.compareTo("-1") == 0 || addProduct.toUpperCase().compareTo("N") == 0) {
 		    	break;
 		    }
 		}

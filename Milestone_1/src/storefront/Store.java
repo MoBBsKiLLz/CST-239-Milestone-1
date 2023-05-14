@@ -123,7 +123,7 @@ public class Store {
 			for(int s = 0; s < shoppingCart.size(); s++) {
 			    Product currentProduct = shoppingCart.get(s);
 			    if(currentProduct.getName().compareTo(productName) == 0) {
-					if(currentProduct.getQuantity() == quantity) {
+					if(currentProduct.getQuantity() == quantity || currentProduct.getQuantity() < quantity) {
 					    shoppingCart.remove(s);
 					    System.out.println("Item removed from shopping cart.");
 					    return true;
