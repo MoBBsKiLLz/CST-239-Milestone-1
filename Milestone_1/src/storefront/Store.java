@@ -2,36 +2,74 @@ package storefront;
 
 import java.util.ArrayList;
 
+/**
+ * Store class with inventory (ArraysList<Product>) and shoppingCart (ArrayList<Product>)
+ * @author migg_
+ *
+ */
 public class Store {
+	/**
+	 * Fields include inventory and shoppingCart as ArrayList<Product>
+	 */
     private ArrayList<Product> inventory;
     private ArrayList<Product> shoppingCart;
     
+    /**
+     * Store default constructor that sets fields as empty ArrayLists
+     */
     public Store(){
 	inventory = new ArrayList<Product>();
 	shoppingCart = new ArrayList<Product>();
     }
     
-    public Store(String type, ArrayList<Product> inventory, ArrayList<Product> shoppingCart) {
+    /**
+     * Store constructor that takes inventory and shoppingCart parameters
+     * @param inventory Inventory parameter as a ArrayList<Product>
+     * @param shoppingCart ShoppingCart parameter as a ArrayList<Product>
+     */
+    public Store(ArrayList<Product> inventory, ArrayList<Product> shoppingCart) {
 	this.inventory = inventory;
 	this.shoppingCart = shoppingCart;
     }
-
+    
+    /**
+     * Returns the Inventory of a product
+     * @return Returns the Inventory as an ArrayList<Product>
+     */
     public ArrayList<Product> getInventory() {
         return inventory;
     }
 
+    /**
+     * Sets the Inventory of a product taking a parameter
+     * @param inventory Inventory parameter as an ArrayList<Product>
+     */
     public void setInventory(ArrayList<Product> inventory) {
         this.inventory = inventory;
     }
 
+    /**
+     * Returns the ShoppingCart of a product
+     * @return Returns the ShoppingCart as an ArrayList<Product>
+     */
     public ArrayList<Product> getShoppingCart() {
         return shoppingCart;
     }
 
+    /**
+     * Sets the ShoppingCart of a product taking a parameter
+     * @param shoppingCart ShoppingCart parameter as a ArrayList<Product>
+     */
     public void setShoppingCart(ArrayList<Product> shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
     
+    /**
+     * Adds a product to the ShoppingCart taking two parameters
+     * @param productName ProductName parameter as a String
+     * @param quantity Quantity parameter as an int
+     * @return Returns true or false
+     */
     public boolean addToCart(String productName, int quantity) {
 		// Loop through inventory
 		for(int i = 0; i < inventory.size(); i++) {
@@ -73,6 +111,12 @@ public class Store {
 		return false;
     }
     
+    /**
+     * Removes a product from the ShoppingCart
+     * @param productName ProductName parameter as a String
+     * @param quantity Quantity parameter as an int
+     * @return Returns true or false
+     */
     public boolean removeFromCart(String productName, int quantity) {
     	if (shoppingCart.size() > 0) {
     		// Loop through shoppingCart
@@ -103,61 +147,67 @@ public class Store {
     	return false;
     }
     
+    /**
+     * Completes the purchase of a product by removing it from the inventory
+     * @return Returns a receipt as an ArrayList<Product>
+     */
     public ArrayList<Product> purchase() {
-	ArrayList<Product> receipt = new ArrayList<Product>();
-	shoppingCart.forEach(cart ->{
-		receipt.add(cart);
-	});
-	
-	if(shoppingCart.size() > 0) {
-	    // Loop through shoppingCart
-	    for(int s = 0; s < shoppingCart.size(); s++) {
-	    	// Loop through inventory
-	    	for(int i = 0; i < inventory.size(); i++) {
-	    	    Product currentSC = shoppingCart.get(s);
-	    	    Product currentInv = inventory.get(i);
-	    	    // Check if product name matches
-	    	    if(currentSC.getName() == currentInv.getName()) {
-	    	    	// Set the new inventory product quantity based on the quantity being purchased
-	    	    	currentInv.setQuantity(currentInv.getQuantity() - currentSC.getQuantity());
-	    	    }
-	    	}
-	    }
+		ArrayList<Product> receipt = new ArrayList<Product>();
+		shoppingCart.forEach(cart ->{
+			receipt.add(cart);
+		});
 		
-	    // Clear the shopping cart
-	    shoppingCart.clear();
-	    
-	    System.out.println("Purchase successful!");
-	    
-	    return receipt;
-	}
-	else {
-	    System.out.println("Shopping cart is empty.");
-	    return null;
-	}
-	
-	
-	
+		if(shoppingCart.size() > 0) {
+		    // Loop through shoppingCart
+		    for(int s = 0; s < shoppingCart.size(); s++) {
+		    	// Loop through inventory
+		    	for(int i = 0; i < inventory.size(); i++) {
+		    	    Product currentSC = shoppingCart.get(s);
+		    	    Product currentInv = inventory.get(i);
+		    	    // Check if product name matches
+		    	    if(currentSC.getName() == currentInv.getName()) {
+		    	    	// Set the new inventory product quantity based on the quantity being purchased
+		    	    	currentInv.setQuantity(currentInv.getQuantity() - currentSC.getQuantity());
+		    	    }
+		    	}
+		    }
+			
+		    // Clear the shopping cart
+		    shoppingCart.clear();
+		    
+		    System.out.println("Purchase successful!");
+		    
+		    return receipt;
+		}
+		else {
+		    System.out.println("Shopping cart is empty.");
+		    return null;
+		}
 	
     }
     
+    /**
+     * Cancels the purchase of a product taking a parameter
+     * @param receipt Receipt parameter as a ArrayList<Product>
+     * @return Returns true or false
+     */
     public boolean cancel(ArrayList<Product> receipt) {
-	boolean result = false;
-	// Loop through receipt
-	for(int r = 0; r < receipt.size(); r++) {
-	    // Loop through inventory
-	    for(int i = 0; i < inventory.size(); i++) {
-		Product currentRec = receipt.get(r);
-		Product currentInv = inventory.get(i);
-		// Check if product name matches
-		if(currentRec.getName() == currentInv.getName()) {
-		    // Set the new inventory product quantity based on the quantity being purchased
-		    currentInv.setQuantity(currentInv.getQuantity() + currentRec.getQuantity());
-		    result = true;
+		boolean result = false;
+		// Loop through receipt
+		for(int r = 0; r < receipt.size(); r++) {
+		    // Loop through inventory
+		    for(int i = 0; i < inventory.size(); i++) {
+				Product currentRec = receipt.get(r);
+				Product currentInv = inventory.get(i);
+				// Check if product name matches
+				if(currentRec.getName() == currentInv.getName()) {
+				    // Set the new inventory product quantity based on the quantity being purchased
+				    currentInv.setQuantity(currentInv.getQuantity() + currentRec.getQuantity());
+				    result = true;
+				}
+		    }
 		}
-	    }
-	}
-	
-	return result;
+		
+		return result;
     }
 }
