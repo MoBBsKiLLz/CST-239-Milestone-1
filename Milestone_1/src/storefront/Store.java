@@ -153,11 +153,12 @@ public class Store {
      */
     public ArrayList<Product> purchase() {
 		ArrayList<Product> receipt = new ArrayList<Product>();
-		shoppingCart.forEach(cart ->{
-			receipt.add(cart);
-		});
 		
 		if(shoppingCart.size() > 0) {
+			// Add products in shopping cart to receipt
+			shoppingCart.forEach(cart ->{
+				receipt.add(cart);
+			});
 		    // Loop through shoppingCart
 		    for(int s = 0; s < shoppingCart.size(); s++) {
 		    	// Loop through inventory
